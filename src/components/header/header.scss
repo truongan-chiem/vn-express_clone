@@ -1,0 +1,267 @@
+@use '../../scss/' as *;
+.header {
+    position: relative;
+    z-index: 100;
+    height: $header-height;
+
+    &__banner {
+        height: 270px;
+        background-color: #774e20;
+        img {
+            height: 100%;
+        }
+    }
+    &__action {
+        height: 52px;
+        @include flex(center, space-between);
+        &__left {
+            @include flex(center, flex-start);
+            .logo {
+                height: 34px;
+                margin-right: 20px;
+
+                img {
+                    height: 100%;
+                }
+            }
+            &__time {
+                font-size: 0.8rem;
+                color: $txt-second-color;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -10px;
+                    background-color: $txt-second-color;
+                    width: 1px;
+                    height: 100%;
+                }
+
+                @include tablet {
+                    display: none;
+                }
+            }
+        }
+        &__right {
+            @include flex(center, flex-end);
+            &__btn {
+                @include flex(center, null);
+                & > * {
+                    margin-right: 15px;
+                }
+                @include mobile {
+                    display: none;
+                }
+            }
+            &__search {
+                position: relative;
+                margin-left: 15px;
+                input {
+                    width: 160px;
+                    padding: 0 30px 0 14px;
+                    line-height: 32px;
+                    outline: none;
+                    border: 1px solid #e5e5e5;
+                    border-radius: 16px;
+                }
+                span {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform: translateX(-25%);
+                    font-size: 1.4rem;
+                    color: $txt-second-color;
+                    cursor: pointer;
+                    @include tablet {
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+                input:focus ~ span,
+                input:valid ~ span {
+                    color: $black;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0px;
+                    background-color: $txt-second-color;
+                    width: 1px;
+                    height: 85%;
+                    transform: translateX(-15px);
+                }
+
+                @include tablet {
+                    display: none;
+                }
+            }
+
+            &__login {
+                margin-left: 15px;
+            }
+        }
+    }
+
+    &__nav {
+        max-width: 1370px;
+        height: 50px;
+        margin: auto;
+        @include flex(center, space-between);
+        &__item {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4f4f4f;
+
+            i {
+                font-size: 20px;
+                color: $txt-second-color;
+            }
+            &.active {
+                color: $main-color;
+            }
+        }
+        .item-home {
+            width: 26px;
+            height: 26px;
+            background-color: rgba($color: $txt-second-color, $alpha: 0.2);
+            @include flex(center, center);
+            border-radius: 50%;
+            &:hover {
+                cursor: pointer;
+
+                background-color: $main-color;
+                i {
+                    color: $white;
+                }
+            }
+            &-shrink {
+                color: $main-color;
+                i {
+                    color: $main-color;
+                }
+                position: relative;
+                & > * > * ~ * {
+                    margin-right: 15px;
+                    margin-left: 15px;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    width: 1px;
+                    height: 50%;
+                    background-color: rgba($color: $txt-second-color, $alpha: 0.1);
+                    transform: translateY(-50%);
+                }
+            }
+        }
+        .item-all {
+            color: $txt-second-color;
+            @include flex(center, center);
+            cursor: pointer;
+            &:hover {
+                color: $main-color;
+                i {
+                    color: $main-color;
+                }
+            }
+        }
+    }
+    @include tablet {
+        .nav__container {
+            display: none;
+        }
+    }
+}
+
+//tippy
+.list-item-tippy {
+    width: 180px;
+    background-color: $white;
+    box-shadow: $box-shadow;
+    min-height: 190px;
+    border-top: 1px solid $main-color;
+    & > * {
+        margin: 10px 15px;
+    }
+    div {
+        cursor: pointer;
+        a:hover {
+            text-decoration: underline;
+            color: $txt-color;
+        }
+    }
+}
+
+.shrink {
+    position: fixed;
+    background-color: $white;
+    box-shadow: $box-shadow;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    transition: all 0.7s ease;
+    & > .header__nav {
+        margin: 0 4rem;
+        li {
+            font-size: 0.8rem;
+            margin-right: 0.3rem;
+        }
+    }
+}
+
+.overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    z-index: 101;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+    .modal {
+        position: fixed;
+        z-index: 102;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        @include mobile {
+            width: 80%;
+        }
+        height: 60%;
+        background-color: $white;
+        box-shadow: $box-shadow;
+        border-radius: 1rem;
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 26px;
+            height: 26px;
+            outline: none;
+            border: none;
+            margin: 0.5rem 0.5rem 0 0;
+            background-color: transparent;
+            i {
+                font-size: 1.5rem;
+                color: $main-color;
+                cursor: pointer;
+            }
+        }
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}

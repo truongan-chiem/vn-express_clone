@@ -1,0 +1,179 @@
+@use '../../scss/' as *;
+
+.form {
+    padding: 1rem 0;
+    height: 100%;
+    &__header {
+        @include flex(center, space-around);
+        &__title {
+            color: $black;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba($color: $txt-second-color, $alpha: 0.5);
+            &.active {
+                color: $main-color;
+                border-bottom: 1px solid $main-color;
+            }
+        }
+        @include tablet {
+            &__title:last-child {
+                display: none;
+            }
+        }
+    }
+    &__content {
+        @include flex(flex-start, space-around);
+        height: 90%;
+        position: relative;
+        &__login {
+            height: 100%;
+            width: 360px;
+            flex-direction: column;
+            @include flex(null, center);
+            h2 {
+                margin-bottom: 1rem;
+                font-weight: 400;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            &__container {
+                &__input {
+                    @include mobile {
+                        width: 80%;
+                        margin: auto;
+                    }
+                    position: relative;
+                    input {
+                        margin: 1rem 0;
+                        width: 100%;
+                        padding: 10px 16px 10px 8px;
+                    }
+                    input:focus ~ label,
+                    input:valid ~ label {
+                        transform: translateY(-150%);
+                        font-size: 0.8rem;
+                    }
+                    label {
+                        position: absolute;
+                        top: 50%;
+                        left: 4%;
+                        transform: translateY(-50%);
+                        transition: all 0.3s ease-in;
+                        pointer-events: none;
+                        padding: 0 4px;
+                        background-color: $white;
+                    }
+                    & .error {
+                        position: absolute;
+                        bottom: 0;
+                        left: 2%;
+                        transform: translateY(100%);
+                        color: red;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        opacity: 0;
+
+                        &.active {
+                            opacity: 1;
+                        }
+                    }
+                }
+                &__action {
+                    @include flex(null, null);
+                    flex-direction: column;
+                    button {
+                        height: 40px;
+                        background-color: transparent;
+                        border: none;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                    button:first-child {
+                        background-color: rgba($color: $txt-second-color, $alpha: 0.6);
+                        color: $white;
+                        margin-bottom: 1rem;
+                    }
+                    button:last-child {
+                        color: rgba($color: $txt-second-color, $alpha: 0.6);
+                    }
+                }
+            }
+            position: relative;
+
+            &::after {
+                position: absolute;
+                content: '';
+                top: 50%;
+                right: -10%;
+                transform: translateY(-50%);
+                width: 1px;
+                height: 90%;
+                background-color: rgba($color: $txt-second-color, $alpha: 0.5);
+            }
+        }
+        &__link {
+            height: 100%;
+            width: 250px;
+            flex-direction: column;
+            @include flex(null, center);
+            h2 {
+                margin-bottom: 1rem;
+                font-weight: 400;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            button {
+                width: 100%;
+                height: 40px;
+                font-size: 1rem;
+                font-weight: 600;
+                padding: 1.5rem 1rem;
+                cursor: pointer;
+                background-color: transparent;
+                & ~ * {
+                    margin-top: 1rem;
+                }
+                position: relative;
+                i {
+                    position: absolute;
+                    top: 50%;
+                    left: 10%;
+                    transform: translateY(-50%);
+                    font-size: 1.4rem;
+                }
+            }
+            & .fb {
+                @include flex(center, center);
+                border: 1px solid #3b5999;
+                color: #3b5999;
+                i {
+                    color: inherit;
+                }
+            }
+            & .google {
+                @include flex(center, center);
+                border: 1px solid $blue;
+                color: $blue;
+                i {
+                    color: #eb4132;
+                }
+            }
+            & .apple {
+                @include flex(center, center);
+            }
+            @include tablet {
+                display: none;
+            }
+        }
+    }
+}

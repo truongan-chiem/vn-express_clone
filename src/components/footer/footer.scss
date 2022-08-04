@@ -1,0 +1,185 @@
+@use '../../scss/' as *;
+
+.footer {
+    padding: 1rem 0;
+    &__nav {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        margin-bottom: 1rem;
+        @include tablet {
+            &__menu:first-child {
+                margin-left: 1rem;
+            }
+        }
+        @include mobile {
+            display: block;
+            & > * {
+                display: none;
+            }
+            .wrap-contact {
+                display: block;
+            }
+        }
+        &__menu {
+            @include tablet {
+                margin-bottom: 2rem;
+            }
+            & > * ~ * {
+                margin-top: 1rem;
+            }
+            li > a:hover {
+                color: $black;
+                text-decoration: underline;
+            }
+            li {
+                font-size: 0.9rem;
+            }
+            &.bold {
+                font-weight: 600;
+                font-size: 1rem;
+            }
+            &.contact_pay {
+                position: relative;
+                padding-left: 1rem;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    width: 1px;
+                    height: 100%;
+                    background-color: rgba($color: $txt-second-color, $alpha: 0.5);
+                    @include tablet {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    &__social {
+        margin-top: 1rem;
+        @include flex(center, space-between);
+        &__left {
+            @include flex(center, flex-start);
+            span {
+                font-weight: 400;
+                font-size: 1rem;
+                color: $txt-second-color;
+                margin-right: 1rem;
+                @include mobile {
+                    display: none;
+                }
+            }
+            img {
+                width: 140px;
+            }
+        }
+        &__right {
+            @include flex(center, flex-end);
+
+            span:first-child {
+                font-weight: 400;
+                font-size: 1rem;
+                color: $txt-second-color;
+                margin-right: 1rem;
+            }
+            &__follow {
+                font-size: 0.9rem;
+                color: $txt-second-color;
+            }
+            i {
+                color: $txt-second-color;
+                font-size: 2rem;
+                margin-left: 1rem;
+
+                &:hover.bxl-facebook-circle {
+                    cursor: pointer;
+                    color: #3b5999;
+                }
+                &:hover.bxl-twitter {
+                    cursor: pointer;
+                    color: #55acee;
+                }
+                &:hover.bxl-youtube {
+                    cursor: pointer;
+                    color: #cc0000;
+                }
+            }
+        }
+    }
+}
+.wrap-contact {
+    padding-left: 1rem;
+    position: relative;
+    &__download {
+        margin-bottom: 0.5rem;
+
+        &__title {
+            font-weight: 400;
+            font-size: 1rem;
+            color: $txt-second-color;
+        }
+        &__btn {
+            @include flex(flex-start, flex-start);
+            button {
+                margin-right: 10px;
+            }
+        }
+        &__btn-contact {
+            display: inline;
+            align-items: flex-start;
+            button {
+                color: $black;
+            }
+            button:last-child {
+                width: 170px;
+                padding-left: 0;
+            }
+        }
+        &__phone {
+            @include flex(null, null);
+            &__item {
+                margin-right: 1rem;
+                @include flex(center, center);
+                flex-direction: column;
+                span {
+                    font-size: 0.8rem;
+                    color: $txt-second-color;
+                }
+            }
+        }
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background-color: rgba($color: $txt-second-color, $alpha: 0.5);
+    }
+
+    @include mobile {
+        &__download {
+            &__title {
+                font-size: 2rem;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            &__btn {
+                @include flex(center, space-evenly);
+            }
+            &__phone {
+                justify-content: center;
+                &__item {
+                    h4 {
+                        font-size: 1.5rem;
+                    }
+                    span {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

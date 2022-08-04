@@ -1,0 +1,142 @@
+@use '../../scss/' as *;
+
+.section {
+    @include flex(null, null);
+    &__new {
+        width: 70%;
+        @include tablet {
+            width: 100%;
+        }
+        &__title {
+            @include flex(null, null);
+            &__img {
+                width: 65%;
+            }
+            &__info {
+                flex: 1;
+                padding: 1rem;
+                @include flex(flex-start, space-between);
+                flex-direction: column;
+                background-color: $gray;
+                &__title {
+                    font-size: 1.4rem;
+                    transition: color 0.5s ease;
+                    &:hover {
+                        color: $blue;
+                        cursor: pointer;
+                    }
+                }
+                &__description {
+                    font-size: 0.9rem;
+                    text-overflow: ellipsis;
+                }
+                &__below {
+                    @include flex(flex-start, flex-start);
+                    font-size: 0.8rem;
+                    color: $txt-second-color;
+                    p {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        &__subtitle {
+            @include flex(null, null);
+            &__left {
+                width: 65%;
+                @include flex(null, null);
+
+                &__info {
+                    flex: 1;
+                    padding: 10px;
+                    &:hover {
+                        color: $black;
+                    }
+                    h4 {
+                        margin-bottom: 10px;
+                        font-size: 1rem;
+                        &:hover {
+                            color: $blue;
+                        }
+                    }
+                    p {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+            &__right {
+                flex: 1;
+                .box-gocnhin {
+                    position: relative;
+                    padding: 10px;
+                    & > a {
+                        color: $main-color;
+                        font-weight: 500;
+                    }
+                    & > h4 {
+                        margin-bottom: 10px;
+                        font-size: 1rem;
+                        &:hover {
+                            color: $blue;
+                        }
+                    }
+                    & > p {
+                        font-size: 0.9rem;
+                    }
+
+                    &__author {
+                        @include flex(center, space-between);
+
+                        &__left {
+                            color: $txt-second-color;
+                            p {
+                                font-style: italic;
+                            }
+                            &__interactive {
+                                font-size: 0.8rem;
+                                cursor: pointer;
+                                i {
+                                    margin-right: 5px;
+                                    &:hover {
+                                        color: #bdbdbd;
+                                    }
+                                }
+                                span {
+                                    color: $blue;
+                                }
+                            }
+                        }
+                        &__right {
+                            img {
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        width: 2px;
+                        height: 85%;
+                        transform: translateY(-50%);
+                        background-color: #bdbdbd;
+                    }
+                }
+            }
+        }
+    }
+    &__ads {
+        flex: 1;
+        padding: 20px;
+        @include flex(center, center);
+        img {
+            width: 300px;
+        }
+        @include tablet {
+            display: none;
+        }
+    }
+}

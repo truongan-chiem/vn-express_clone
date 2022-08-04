@@ -1,0 +1,94 @@
+@use '../../scss/' as *;
+
+.section-boxcates {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+
+    .box-cate:last-child {
+        &::after {
+            display: none;
+        }
+    }
+}
+.box-cate {
+    padding: 10px;
+
+    position: relative;
+    &__nav {
+        @include flex(flex-end, flex-start);
+
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        margin-bottom: 1rem;
+
+        & > * ~ * {
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-left: 1rem;
+            color: $txt-second-color;
+            :hover {
+                color: $blue;
+            }
+            @include tablet {
+                display: none;
+            }
+        }
+
+        li:first-of-type {
+            border-bottom: 1px solid $main-color;
+        }
+    }
+
+    &__content__mainBox {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba($color: $txt-second-color, $alpha: 0.5);
+
+        &__title {
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.4s ease;
+            &:hover {
+                color: $blue;
+            }
+        }
+        &__desc {
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+            &:hover {
+                color: $black;
+            }
+        }
+    }
+    &__content__subBox {
+        margin-bottom: 1rem;
+        &__title {
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.4s ease;
+            &:hover {
+                color: $blue;
+            }
+        }
+        &__desc {
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+            &:hover {
+                color: $black;
+            }
+        }
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        right: -2%;
+        width: 1px;
+        height: 95%;
+        transform: translateY(-50%);
+        background-color: rgba($color: $txt-second-color, $alpha: 0.5);
+    }
+}

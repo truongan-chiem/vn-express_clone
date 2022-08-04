@@ -1,0 +1,61 @@
+@use '../../scss/' as *;
+
+.section-podcasts {
+    padding: 20px 15px;
+
+    &__header > a {
+        padding-bottom: 5px;
+        border-bottom: 1px solid $main-color;
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 20px;
+        padding-right: 10px;
+        & > * ~ * {
+            &::after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: -2%;
+                transform: translateX(100%);
+                width: 1px;
+                height: 100%;
+                background-color: rgba($color: $txt-second-color, $alpha: 0.5);
+            }
+        }
+        @include tablet {
+            a:last-child {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+        &__item {
+            position: relative;
+            &:hover {
+                color: $black;
+            }
+            padding: 10px 0;
+            @include flex(null, null);
+            &__left {
+                width: 70%;
+                margin-right: 10px;
+                &__title {
+                    font-size: 1rem;
+                    margin-bottom: 1rem;
+                    transition: color 0.5s ease;
+                    &:hover {
+                        color: $blue;
+                    }
+                }
+                &__desc {
+                    font-size: 0.8rem;
+                }
+            }
+            &__right {
+                flex: 1;
+            }
+        }
+    }
+}

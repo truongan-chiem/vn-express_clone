@@ -1,0 +1,27 @@
+@use '../../scss/' as *;
+
+.thoi-su__header {
+    margin-top: 1rem;
+
+    &__above {
+        @include flex(center, space-between);
+
+        &__title {
+            color: $main-color;
+            font-weight: 700;
+        }
+        button {
+            position: relative;
+        }
+    }
+    &__nav {
+        @include flex(flex-end, flex-start);
+        margin: 1rem 0;
+        & > * ~ * {
+            margin-left: 1rem;
+        }
+        li {
+            font-weight: 500;
+        }
+    }
+}

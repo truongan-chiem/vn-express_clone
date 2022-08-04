@@ -1,0 +1,139 @@
+@use '../../scss/' as *;
+
+.box-feature {
+    padding: 4px;
+    margin-bottom: 1rem;
+    &__nav {
+        @include flex(flex-end, null);
+        margin-bottom: 1rem;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: $txt-second-color;
+        & > * ~ * {
+            margin-left: 1rem;
+            @include tablet {
+                display: none;
+            }
+        }
+        li:first-of-type {
+            font-size: 1.2rem;
+            color: $black;
+            font-weight: 600;
+            border-bottom: 1px solid $main-color;
+            &:hover {
+                border-bottom: 1px solid $blue;
+            }
+        }
+        li:hover > a {
+            color: $blue;
+        }
+    }
+
+    &__content {
+        @include flex(null, null);
+        @include tablet {
+            display: block;
+        }
+        border-bottom: 1px solid rgba($color: $txt-second-color, $alpha: 0.5);
+        &__left {
+            flex: 7;
+            @include flex(null, null);
+            @include tablet {
+                display: block;
+            }
+            &:hover > &__info > .title {
+                color: $blue;
+            }
+            &:hover > &__info > .desc {
+                color: $black;
+            }
+            &__image {
+                width: 50%;
+                @include tablet {
+                    width: 100%;
+                }
+                img {
+                    width: 100%;
+                }
+                margin-right: 10px;
+            }
+            &__info {
+                flex: 1;
+                padding: 10px;
+            }
+        }
+        &__right {
+            flex: 3;
+            padding: 10px;
+            @include tablet {
+                display: block;
+            }
+            position: relative;
+            &:hover > .title {
+                color: $blue;
+            }
+            &:hover > .desc {
+                color: $black;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -2%;
+                background-color: rgba($color: $txt-second-color, $alpha: 0.5);
+                width: 1px;
+                height: 85%;
+                transform: translateY(-50%);
+                @include tablet {
+                    top: 0;
+                    left: 50%;
+                    width: 95%;
+                    height: 1px;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+    &__news {
+        @include flex(flex-start, space-between);
+        @include tablet {
+            display: block;
+        }
+        &__item {
+            position: relative;
+            padding: 10px 15px;
+            color: $black;
+            font-weight: 500;
+            font-size: 1rem;
+
+            cursor: pointer;
+            &:hover > a {
+                color: $blue;
+                transition: color 0.5s ease;
+            }
+            &::after {
+                position: absolute;
+                content: '';
+                top: 25%;
+                left: 0;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: rgba($color: $txt-second-color, $alpha: 0.5);
+            }
+        }
+        padding-bottom: 1rem;
+    }
+    border-bottom: 1px solid rgba($color: $txt-second-color, $alpha: 0.5);
+}
+.title {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    transition: color 0.5s ease;
+}
+.desc {
+    font-weight: normal;
+    font-size: 0.9rem;
+}

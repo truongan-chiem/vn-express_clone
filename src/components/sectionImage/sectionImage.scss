@@ -1,0 +1,61 @@
+@use '../../scss/' as *;
+
+.section-image {
+    margin: 1rem 0;
+    @include tablet {
+        padding: 0 2rem;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+
+        & > a {
+            border-bottom: 1px solid $main-color;
+            padding-bottom: 0.5rem;
+        }
+    }
+    &__content {
+        @include flex(null, null);
+        img {
+            width: 75%;
+            height: auto;
+            @include mobile {
+                width: 50%;
+                height: auto;
+            }
+        }
+        &__info {
+            flex: 1;
+            @include flex(null, null);
+            flex-direction: column;
+            &__item {
+                height: 50%;
+                padding: 1rem 1rem 0 1rem;
+                background-color: $black;
+                color: rgba($color: $white, $alpha: 0.7);
+                &__title {
+                    margin-bottom: 1rem;
+                }
+                &__desc {
+                    margin-bottom: 1rem;
+                }
+                &__action {
+                    a {
+                        margin-right: 1rem;
+                    }
+                    &:hover > a,
+                    &:hover > i {
+                        color: $blue;
+                        cursor: pointer;
+                    }
+                }
+            }
+            &__item:last-child {
+                background-color: #222222;
+                color: rgba($color: $white, $alpha: 0.4);
+            }
+        }
+    }
+}
